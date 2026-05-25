@@ -36,8 +36,9 @@ Gitを用いてフォルダをクローンします
 `[]`となっている部分を書き換えれば特定のキーワードが含まれるコメントに対し、画像を表示させることができます
 型をTypeScriptであらわすと以下のようになります
 ```typescript
+type AvailableTypes = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 type ImageDisplayEvents = {
-    type: 0 | 1 | 2 | 3,
+    type: AvaliableTypes | AvailableTypes[],
     matches: (string | RegExp)[],
     sources: string[]
 }[]
@@ -71,3 +72,14 @@ const imageDisplayEvents = [
     }
 ];
 ```
+## typeの種類
+| type | 出方 |
+| :--- | :--- |
+| 0 | ぽよんと出てくる |
+| 1 | 落下してきて跳ねる |
+| 2 | 右から転がってくる |
+| 3 | 左右に三回程度揺れる |
+| 4 | 下から出て下に消える |
+| 5 | 花火のように散る |
+| 6 | 10枚の画像が上から下へ、下から上へ移動する |
+| 7 | 画面端でバウンドする |

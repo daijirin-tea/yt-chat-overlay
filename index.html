@@ -100,6 +100,11 @@
             syntax: "<number>";
             inherits: true;
         }
+        @property --additional_top_ratio {
+            initial-value: 0;
+            syntax: "<number>";
+            inherits: true;
+        }
         @keyframes effects_type_0_display {
             0% {
                 --scale: 0;
@@ -134,6 +139,39 @@
                 opacity: 0;
             }
         }
+        @keyframes effects_type_4_display {
+            0% {
+                --scale: 0;
+                --additional_top_ratio: 1;
+            }
+            30%,50% {
+                --scale: 1;
+                --additional_rotate: calc(5 * var(--direction));
+                --additional_top_ratio: 0;
+                opacity: 1;
+            }
+            100% {
+                --scale: 0;
+                --additional_top_ratio: 1;
+            }
+        }
+        @keyframes effects_type_6_display {
+            0% {
+                --additional_top_ratio: 0;
+            }
+            25% {
+                --additional_top_ratio: 1;
+            }
+            50% {
+                --additional_top_ratio: 0;
+            }
+            75% {
+                --additional_top_ratio: 1;
+            }
+            100% {
+                --additional_top_ratio: 0;
+            }
+        }
         #effects_div {
             pointer-events: none;
             user-select: none;
@@ -166,6 +204,36 @@
             width: calc(20vw);
             transform: translate(-50%,-50%)rotate(calc((var(--rotate) + var(--additional_rotate)) * 1deg));
             animation: effects_type_3_display 1.5s ease forwards;
+        }
+        .effects_type_4 {
+            position: absolute;
+            top: calc((var(--top) + var(--additional_top_ratio) * var(--additional_top)) * 1px);
+            left: calc(var(--left) * 1px);
+            width: calc(20vw);
+            transform: translate(-50%,-50%)rotate(calc((var(--rotate) + var(--additional_rotate)) * 1deg));
+            animation: effects_type_4_display 1.5s ease forwards;
+        }
+        .effects_type_5 {
+            position: absolute;
+            top: calc(var(--top) * 1px);
+            left: calc(var(--left) * 1px);
+            width: calc(20vw);
+            transform: translate(-50%,-50%);
+        }
+        .effects_type_6 {
+            position: absolute;
+            top: calc((var(--top) + var(--additional_top_ratio) * var(--additional_top)) * 1px);
+            left: calc(var(--left) * 1px);
+            width: calc(20vw);
+            transform: translate(-50%,-50%);
+            animation: effects_type_6_display 8s ease forwards;
+        }
+        .effects_type_7 {
+            position: absolute;
+            top: calc(var(--top) * 1px);
+            left: calc(var(--left) * 1px);
+            width: calc(20vw);
+            transform: translate(-50%,-50%);
         }
 
         #context_menu {
