@@ -262,7 +262,7 @@ function displayType7(sources) {
         animate();
     }
 }
-function addChatItem(msgData) {
+function addChatItem(msgData,chatAllowEvents = true) {
     const chatItem = document.createElement('div');
     chatItem.classList.add('chat_item');
     chats.append(chatItem);
@@ -313,7 +313,7 @@ function addChatItem(msgData) {
                 }
             }
         });
-        if (didMatch && enable_events) {
+        if (didMatch && enable_events && chatAllowEvents) {
             if (imageDisplayEvent.type === 0) {
                 displayType0(imageDisplayEvent.sources);
             } else if (imageDisplayEvent.type === 1) {

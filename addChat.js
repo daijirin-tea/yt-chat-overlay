@@ -17,7 +17,7 @@ async function getChatMessages(liveChatId,pageToken = '') {
     const res = await fetch(url);
     return await res.json();
 }
-function addChat(chat) {
+function addChat(chat,chatAllowEvents = true) {
     console.log(chat);
     chat.items.forEach((item)=>{
         const snippet = item.snippet;
@@ -40,7 +40,7 @@ function addChat(chat) {
             msgData.tier = snippet.superChatDetails.tier;
         }
         msgData.message = snippet.displayMessage;
-        addChatItem(msgData);
+        addChatItem(msgData,chatAllowEvents);
     });
 }
 
@@ -75,7 +75,7 @@ function addTestChat() {
         return;
     }
     const firstChat = await getChatMessages(liveChatId);
-    addChat(firstChat);
+    addChat(firstChat,false);
     let lastChat = firstChat;        
 
     setInterval(async ()=>{
