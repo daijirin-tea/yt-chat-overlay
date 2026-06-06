@@ -1,4 +1,5 @@
 const VIDEO_ID = new URL(decodeURIComponent(location.href)).searchParams.get('v');
+let usedId = [];
 async function getLiveChatId() {
     const url = new URL('https://www.googleapis.com/youtube/v3/videos');
     url.searchParams.set('part','liveStreamingDetails');
@@ -22,6 +23,11 @@ function addChat(chat,chatAllowEvents = true) {
     chat.items.forEach((item)=>{
         const snippet = item.snippet;
         const author = item.authorDetails;
+        if (usedId.includes(item.id)) {
+            return;
+        } else {
+            usedId.push(item.id);
+        }
         let msgData = {
             id: item.id,
             type: snippet.type,
